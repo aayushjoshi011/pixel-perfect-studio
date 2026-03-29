@@ -1,21 +1,16 @@
 import { motion } from "framer-motion";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
+import { HelpCircle } from "lucide-react";
 
 const faqs = [
   {
     question: "What types of video editing do you offer?",
     answer:
-      "We cover the full spectrum—commercial campaigns, music videos, documentaries, product launches, social content, and event recaps. Every project receives broadcast-level attention to detail.",
+      "We cover the full spectrum commercial campaigns, music videos, documentaries, product launches, social content, and event recaps. Every project receives broadcast-level attention to detail.",
   },
   {
     question: "How fast is the typical turnaround?",
     answer:
-      "Standard projects are delivered within 5–7 business days. We also offer expedited 48-hour and 72-hour turnarounds for time-sensitive campaigns at an additional rate.",
+      "Standard projects are delivered within 5 to 7 business days. We also offer expedited 48-hour and 72-hour turnarounds for time-sensitive campaigns at an additional rate.",
   },
   {
     question: "Do you handle raw footage or do I need a rough cut?",
@@ -25,7 +20,7 @@ const faqs = [
   {
     question: "Can you match our existing brand guidelines?",
     answer:
-      "Absolutely. We integrate your brand kit—fonts, colors, motion templates, and tone guidelines—into every deliverable to ensure visual consistency across all touchpoints.",
+      "Absolutely. We integrate your brand kit-fonts, colors, motion templates, and tone guidelines into every deliverable to ensure visual consistency across all touchpoints.",
   },
   {
     question: "What formats and platforms do you deliver for?",
@@ -41,48 +36,73 @@ const faqs = [
 
 const FAQSection = () => {
   return (
-    <section id="faq" className="py-24 lg:py-36 bg-background">
+    <section id="faq" className="py-16 lg:py-20 bg-white">
       <div className="container mx-auto px-6 lg:px-12">
         <motion.div
-          className="text-center mb-16 lg:mb-24"
+          className="text-center mb-24 lg:mb-28"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8 }}
         >
-          <h2 className="section-headline mb-6">
-            Frequently asked
+          {/* <p
+            className="mb-6 mx-auto"
+            style={{
+              fontFamily: 'Inter, "Neue Haas Grotesk", "Helvetica Neue", Helvetica, Arial, system-ui, -apple-system, sans-serif',
+              fontWeight: 500,
+              fontSize: 'clamp(12px, 1.3vw, 13px)',
+              letterSpacing: '0.14em',
+              lineHeight: '1.4',
+              color: '#9a9a9a',
+              textTransform: 'uppercase',
+            }}
+          >
+            Everything you need to know
+          </p> */}
+          <h2
+            className="mb-6 mx-auto max-w-[1000px] text-center"
+            style={{
+              fontFamily: 'Inter, "Neue Haas Grotesk", "Helvetica Neue", Helvetica, Arial, system-ui, -apple-system, sans-serif',
+              fontWeight: 650,
+              fontSize: 'clamp(65px, 13vw, 90px)',
+              letterSpacing: '-0.015em',
+              lineHeight: '1.1',
+              color: '#111111',
+            }}
+          >
+            Frequently
             <br />
-            questions
+            asked questions
           </h2>
-          <p className="text-muted-foreground text-lg max-w-xl mx-auto">
-            Everything you need to know about working with us.
+          <p className="text-[#555555] text-lg max-w-xl mx-auto whitespace-nowrap">
+            Find answers to common inquiries about our services and processes.
           </p>
         </motion.div>
 
         <motion.div
-          className="max-w-3xl mx-auto"
+          className="max-w-6xl mx-auto"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-50px" }}
+          viewport={{ once: true, margin: "-45px" }}
           transition={{ duration: 0.6 }}
         >
-          <Accordion type="single" collapsible className="w-full">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
             {faqs.map((faq, index) => (
-              <AccordionItem
+              <motion.div
                 key={index}
-                value={`item-${index}`}
-                className="border-border"
+                whileHover={{ y: -8, transition: { duration: 0.3, ease: "easeOut" } }}
+                className="bg-white rounded-[20px] p-11 shadow-[0_12px_30px_rgba(0,0,0,0.08)] hover:shadow-[0_20px_50px_rgba(0,0,0,0.15)] transition-all duration-300 text-center"
               >
-                <AccordionTrigger className="text-foreground text-base md:text-lg font-medium text-left hover:no-underline hover:text-primary transition-colors py-6">
+                <HelpCircle className="w-8 h-8 text-[#2563EB] mx-auto mb-5" strokeWidth={1.5} />
+                <h3 className="text-[#111111] text-lg font-semibold mb-3 leading-snug">
                   {faq.question}
-                </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground text-base leading-relaxed pb-6">
+                </h3>
+                <p className="text-[#666666] text-sm leading-relaxed">
                   {faq.answer}
-                </AccordionContent>
-              </AccordionItem>
+                </p>
+              </motion.div>
             ))}
-          </Accordion>
+          </div>
         </motion.div>
       </div>
     </section>

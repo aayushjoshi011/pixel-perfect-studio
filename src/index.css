@@ -69,8 +69,10 @@
 
 @layer components {
   .hero-headline {
-    @apply font-extrabold tracking-tight leading-[0.95] text-foreground;
-    font-size: clamp(3rem, 7.5vw, 7.2rem);
+    @apply font-black tracking-tight text-white;
+    font-size: clamp(46px, 7.5vw, 110px);
+    line-height: 1.02;
+    letter-spacing: -0.02em;
   }
 
   .hero-gradient-overlay {
@@ -80,6 +82,13 @@
   .section-headline {
     @apply font-extrabold tracking-tight leading-[1.05] text-foreground;
     font-size: clamp(2.25rem, 5vw, 4.5rem);
+  }
+
+  .section-headline-light {
+    @apply font-extrabold tracking-tight text-[#111111];
+    font-size: clamp(38px, 5vw, 80px);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
   }
 
   .work-card {
@@ -103,7 +112,14 @@
   }
 
   .capability-card {
-    @apply rounded-xl border border-border bg-card p-8 transition-all duration-300 hover:border-primary/30 hover:bg-secondary;
+    @apply bg-white rounded-[22px] p-9 transition-all duration-300 hover:shadow-xl;
+    border: 1px solid #eee;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  }
+
+  .capability-card:hover {
+    border-color: rgba(59, 130, 246, 0.3);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.12);
   }
 }
 

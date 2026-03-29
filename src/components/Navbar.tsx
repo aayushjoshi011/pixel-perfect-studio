@@ -14,13 +14,20 @@ const Navbar = () => {
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50">
-      <div className="absolute inset-0 bg-background/80 backdrop-blur-md border-b border-border/50" />
+    <div className="absolute inset-0 bg-background/80 backdrop-blur-md border-b border-border/50" />
       <div className="relative container mx-auto px-6 lg:px-12">
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
-          <a href="#" className="text-foreground font-extrabold text-xl tracking-tight">
-            STUDIO<span className="text-primary">.</span>
-          </a>
+          <div className="flex items-center gap-3">
+            <img
+              src="/images/profile.jpeg"
+              alt="Profile"
+              className="w-10 h-10 rounded-full object-cover"
+            />
+            <a href="#" className="text-foreground font-extrabold text-xl tracking-tight">
+              Ansh Raj Singh<span className="text-primary"></span>
+            </a>
+          </div>
 
           {/* Desktop nav */}
           <div className="hidden md:flex items-center gap-8">
@@ -28,6 +35,14 @@ const Navbar = () => {
               <a
                 key={item.label}
                 href={item.href}
+                onClick={(e) => {
+                  const targetId = item.href.replace("#", "");
+                  const targetSection = document.getElementById(targetId);
+                  if (targetSection) {
+                    e.preventDefault();
+                    targetSection.scrollIntoView({ behavior: "smooth" });
+                  }
+                }}
                 className="text-muted-foreground hover:text-foreground transition-colors duration-300 text-sm font-medium tracking-wide uppercase"
               >
                 {item.label}
@@ -35,6 +50,13 @@ const Navbar = () => {
             ))}
             <a
               href="#contact"
+              onClick={(e) => {
+                const targetSection = document.getElementById("contact");
+                if (targetSection) {
+                  e.preventDefault();
+                  targetSection.scrollIntoView({ behavior: "smooth" });
+                }
+              }}
               className="bg-primary hover:bg-primary/90 text-primary-foreground px-5 py-2.5 rounded-md text-sm font-semibold transition-colors duration-300"
             >
               Start project
@@ -66,7 +88,15 @@ const Navbar = () => {
                 <a
                   key={item.label}
                   href={item.href}
-                  onClick={() => setMobileOpen(false)}
+                  onClick={(e) => {
+                    const targetId = item.href.replace("#", "");
+                    const targetSection = document.getElementById(targetId);
+                    if (targetSection) {
+                      e.preventDefault();
+                      targetSection.scrollIntoView({ behavior: "smooth" });
+                    }
+                    setMobileOpen(false);
+                  }}
                   className="text-muted-foreground hover:text-foreground transition-colors text-lg font-medium"
                 >
                   {item.label}
@@ -74,7 +104,14 @@ const Navbar = () => {
               ))}
               <a
                 href="#contact"
-                onClick={() => setMobileOpen(false)}
+                onClick={(e) => {
+                  const targetSection = document.getElementById("contact");
+                  if (targetSection) {
+                    e.preventDefault();
+                    targetSection.scrollIntoView({ behavior: "smooth" });
+                  }
+                  setMobileOpen(false);
+                }}
                 className="bg-primary text-primary-foreground px-5 py-3 rounded-md text-center font-semibold mt-2"
               >
                 Start project

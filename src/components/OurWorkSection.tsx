@@ -1,4 +1,10 @@
+"use client";
+
+import { useState } from "react";
 import { motion } from "framer-motion";
+import VideoCard from "@/components/VideoCard";
+import VideoModal from "@/components/VideoModal";
+import { videos } from "@/lib/videos";
 
 interface WorkItem {
   id: number;
@@ -35,18 +41,32 @@ const itemVariants = {
 };
 
 const OurWorkSection = () => {
+  const [activeVideo, setActiveVideo] = useState(null);
+
   return (
     <section id="work" className="py-24 lg:py-36 bg-background">
       <div className="container mx-auto px-6 lg:px-12">
         <motion.div
-          className="mb-16 lg:mb-24"
+          className="mb-16 lg:mb-24 text-center"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8 }}
         >
-          <h2 className="section-headline mb-6">Our work</h2>
-          <p className="text-muted-foreground text-lg max-w-lg">
+          <h2
+            className="mb-6 mx-auto"
+            style={{
+              fontFamily: 'Inter, "Neue Haas Grotesk", "Helvetica Neue", Helvetica, Arial, system-ui, -apple-system, sans-serif',
+              fontWeight: 650,
+              fontSize: 'clamp(70px, 15vw, 100px)',
+              letterSpacing: '-0.01em',
+              lineHeight: '1.08',
+              color: '#ffffff',
+            }}
+          >
+            Our Work
+          </h2>
+          <p className="text-muted-foreground text-lg max-w-lg mx-auto">
             A selection of projects that push creative boundaries and deliver
             measurable impact.
           </p>
@@ -59,31 +79,22 @@ const OurWorkSection = () => {
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
         >
-          {workItems.map((item) => (
-            <motion.div
-              key={item.id}
-              variants={itemVariants}
-              className="work-card group aspect-video"
-            >
-              <video
-                src={item.videoSrc}
-                autoPlay
-                muted
-                loop
-                playsInline
-                className="w-full h-full object-cover"
-              />
-              <div className="work-card-overlay">
-                <div>
-                  <span className="text-primary text-xs font-semibold uppercase tracking-widest mb-1 block opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                    {item.category}
-                  </span>
-                  <span className="work-card-title">{item.title}</span>
-                </div>
-              </div>
-            </motion.div>
+          {videos.map((video) => (
+            <VideoCard
+              key={video.id}
+              video={video}
+              onClick={() => setActiveVideo(video)}
+            />
           ))}
         </motion.div>
+
+        {activeVideo && (
+          <VideoModal
+            video={activeVideo}
+            isOpen={activeVideo !== null}
+            onClose={() => setActiveVideo(null)}
+          />
+        )}
       </div>
     </section>
   );

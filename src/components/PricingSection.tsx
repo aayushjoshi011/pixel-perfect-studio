@@ -15,35 +15,35 @@ interface Plan {
 const plans: Plan[] = [
   {
     name: "Starter",
-    price: "$1,500",
+    price: " ₹1,199",
     period: "/project",
     description: "Perfect for one-off campaigns and standalone edits.",
     features: [
-      "Up to 5 minutes final cut",
+      "Up to 90 seconds of final cut",
       "2 revision rounds",
       "Single platform export",
-      "5-day delivery",
+      "3-day delivery",
+      "Motion graphics add-on",
       "Stock music included",
     ],
     highlighted: false,
-    cta: "Get started",
+    cta: "Get my first video",
   },
   {
     name: "Professional",
-    price: "$4,500",
+    price: "₹8,999",
     period: "/month",
     description: "For brands shipping content consistently every month.",
     features: [
-      "Up to 20 minutes monthly",
-      "Unlimited revisions",
+      "10 short videos per month",
+      "3 Free revisions",
       "Multi-platform exports",
       "48-hour rush available",
-      "Dedicated editor",
+      "Hooks + subtitles + retention edits",
       "Motion graphics included",
-      "Brand kit integration",
     ],
     highlighted: true,
-    cta: "Start free trial",
+    cta: "Start Growing Now",
   },
   {
     name: "Enterprise",
@@ -54,11 +54,9 @@ const plans: Plan[] = [
       "Unlimited content volume",
       "Priority 24-hour delivery",
       "All platform optimization",
-      "Dedicated team of 3+",
+      "Dedicated team of 3+ editors",
       "Color grading & finishing",
       "Custom motion templates",
-      "Account manager",
-      "SLA guarantee",
     ],
     highlighted: false,
     cta: "Contact sales",
@@ -85,7 +83,7 @@ const itemVariants = {
 
 const PricingSection = () => {
   return (
-    <section id="pricing" className="py-24 lg:py-36 bg-background">
+    <section id="pricing" className="py-16 lg:py-20 bg-background">
       <div className="container mx-auto px-6 lg:px-12">
         <motion.div
           className="text-center mb-16 lg:mb-24"
@@ -114,7 +112,7 @@ const PricingSection = () => {
               className={`rounded-xl border p-8 flex flex-col transition-all duration-300 ${
                 plan.highlighted
                   ? "border-primary bg-card shadow-lg shadow-primary/10"
-                  : "border-border bg-card hover:border-primary/30 hover:bg-secondary"
+                  : "border-border bg-card hover:border-border hover:bg-secondary"
               }`}
             >
               {plan.highlighted && (
@@ -152,8 +150,14 @@ const PricingSection = () => {
               </ul>
 
               <Button
-                variant={plan.highlighted ? "default" : "outline"}
+                variant="default"
                 className="w-full py-6 text-base font-semibold"
+                onClick={() => {
+                  const contactSection = document.getElementById("contact");
+                  if (contactSection) {
+                    contactSection.scrollIntoView({ behavior: "smooth" });
+                  }
+                }}
               >
                 {plan.cta}
               </Button>

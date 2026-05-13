@@ -101,7 +101,7 @@ const TestimonialsSection = () => {
             style={{
               fontFamily: 'Inter, "Neue Haas Grotesk", "Helvetica Neue", Helvetica, Arial, system-ui, -apple-system, sans-serif',
               fontWeight: 650,
-              fontSize: 'clamp(70px, 15vw, 100px)',
+              fontSize: 'clamp(61px, 15vw, 90px)',
               letterSpacing: '-0.01em',
               lineHeight: '1.08',
               color: '#111111',
